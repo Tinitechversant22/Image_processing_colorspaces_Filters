@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Image</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Select Image Processing Operation</h1>
+        <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image" class="uploaded-image">
+        <form action="{{ url_for('process_image', filename=filename) }}" method="post" class="operation-form">
+            <button name="action" value="gaussian" class="btn">Apply Gaussian Blur</button>
+            <button name="action" value="box" class="btn">Apply Box Blur</button>
+            <button name="action" value="median" class="btn">Apply Median Filter</button>
+            <button name="action" value="bilateral" class="btn">Apply Bilateral Filter</button>
+            <button name="action" value="gray" class="btn">Convert to Grayscale</button>
+            <button name="action" value="hsv" class="btn">Convert to HSV</button>
+            <button name="action" value="ycbcr" class="btn">Convert to YCbCr</button>
+        </form>
+        <a href="{{ url_for('index') }}" class="link">Upload another image</a>
+    </div>
+</body>
+</html>
